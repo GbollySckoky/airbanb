@@ -1,0 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', sans-serif;                                             
+}
+
+#img{
+  background-image: url('../src/assets/Hero_image.png');
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+}
