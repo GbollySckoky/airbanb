@@ -12,7 +12,7 @@ export const datas = [
     {
         name: 'Beach Homes',
         icon: img8,
-        category: 'Kids'
+        category: 'Beach'
     },
     {
         name: 'Cabins',
@@ -22,7 +22,7 @@ export const datas = [
     {
         name: 'City Apartments',
         icon: img6,
-        category: ''
+        category: 'City'
     },
     {
         name: 'Masion',
@@ -47,12 +47,12 @@ export const datas = [
     {
         name: 'Tiny Homes',
         icon: img2,
-        category: ''
+        category: 'Tiny'
     },
     {
         name: 'Treehouses',
         icon: img1,
-        category: ''
+        category: 'Tree'
     },
     {
         name: 'Lakeside',
