@@ -32,7 +32,7 @@ export const datas = [
     {
         name: 'Luxury Stays',
         icon: img4 ,
-        category: ''
+        category: 'Luxury'
     },
     {
         name: 'Family Homes',
@@ -42,7 +42,7 @@ export const datas = [
     {
         name: 'Romantic Stays',
         icon: img3,
-        category: ''
+        category: 'Romantic'
     },
     {
         name: 'Tiny Homes',
