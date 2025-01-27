@@ -13,7 +13,8 @@ export default {
         Gray: '#F5F5F5',
         lightGray: '#1A1A1A80',
         Gray100: '#1A1A1A99',
-        Gold: '#FFC000'
+        Gold: '#FFC000',
+        Black: '#1A1A1A'
       },
     },
   },
