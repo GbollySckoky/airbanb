@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { ProductsDetails } from '../../types/types';
 import { products } from "../../data/ProductDatas"; 
 import ProductDetailsContext from './ProductDetailsContext';
+import ProductVarities from './ProductVarities';
 
 const ProductDetailsHero = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,20 @@ const ProductDetailsHero = () => {
         setIsLoading(false)
       }
     }, [ id ]);
+    if(isLoading){
+        return(
+            <div className='pt-[120px]'>
+                <p>isLoading....</p>
+            </div>
+        )
+    }
+    if(isError){
+        return(
+            <div className='pt-[120px]'>
+                <p>Check your server</p>
+            </div>
+        )
+    }
   return (
     <div className='pt-[120px] w-[80%] mx-auto'>
         <h1 className='font-semibold text-[20px] mb-4'>{data?.title}</h1>
@@ -61,6 +76,7 @@ const ProductDetailsHero = () => {
             productName={data?.productName}
             rate={data?.rate}
          />
+         <ProductVarities />
     </div>
   )
 }
