@@ -1,12 +1,6 @@
-import React from 'react';
 import { useFormContext } from '../../Context/Context';
-
-const datas = [
-  { title: 'Property Features', id: '1', content: 'Details about property features.' },
-  { title: 'Amenities', id: '2', content: 'Information about amenities provided.' },
-  { title: 'The neighbourhood', id: '3', content: 'Details about the surrounding neighbourhood.' },
-  { title: 'Booking policies', id: '4', content: 'Booking rules and cancellation policies.' },
-];
+import { datas } from '../../data/ProductInfoData'; 
+import Amenities from "./Amenities";
 
 const ProductVarities = () => {
   const { state, dispatch } = useFormContext();
@@ -14,7 +8,7 @@ const ProductVarities = () => {
   const handleClick = ( title: string) => {
     dispatch({
       type: 'MOVEMENT',
-      payload: title, // Store the `id` of the active item in global state
+      payload: title, // Store the Data of the active item in global state
     });
   };
 
@@ -36,12 +30,24 @@ const ProductVarities = () => {
       </div>
 
       {/* Dynamic Content */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        {datas.map(({ title,  id, content }) =>
+      <div className="bg-white p-6 rounded-lg shadow-md mb-5">
+        {datas.map(({ title, content }) =>
           state.movement === title ? (
-            <p key={id} className="text-sm text-gray-700">
-              {content}
-            </p>
+            <div>
+                <h1 className='font-semibold  text-[20px] mb-5'>{title}</h1>
+                <div className="text-sm text-gray-700">
+                  {Array.isArray(content) ? (
+                    content.map(({ titles, sub }, id) => (
+                      <div key={id} className="my-6">
+                        <h1 className="text-black font-semibold text-[14px] pb-3">{titles}</h1>
+                        <p className="font-[400] text-[14px] max-w-[500px]">{sub}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <Amenities />
+                  )}
+                </div>
+            </div>
           ) : null
         )}
       </div>

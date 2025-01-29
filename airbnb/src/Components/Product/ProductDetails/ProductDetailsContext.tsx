@@ -56,6 +56,7 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate}: cont
                 className="bg-white block w-full text-center p-1 font-normal text-[14px] text-Black rounded-lg mt-10">
                 Book Now
             </button>
+            <p className="font-normal text-[10px] text-center pt-2 text-white">You will not be charged yet</p>
         </div>
     </div>
   )
