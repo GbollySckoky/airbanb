@@ -29,3 +29,10 @@ export type Products = {
     title?: string;   // Make optional
     description?: string; // Make optional
 }
+
+export type countData = {
+    movement: string
+}
+
+export type Action = 
+| {type:'MOVEMENT'; payload: string}

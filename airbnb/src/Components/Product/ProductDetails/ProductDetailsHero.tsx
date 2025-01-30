@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { ProductsDetails } from '../../types/types';
 import { products } from "../../data/ProductDatas"; 
 import ProductDetailsContext from './ProductDetailsContext';
+import ProductVarities from './ProductVarities';
+import { CiHeart } from "react-icons/ci";
 
 const ProductDetailsHero = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -42,16 +44,39 @@ const ProductDetailsHero = () => {
         setIsLoading(false)
       }
     }, [ id ]);
+    if(isLoading){
+        return(
+            <div className='pt-[120px]'>
+                <p>isLoading....</p>
+            </div>
+        )
+    }
+    if(isError){
+        return(
+            <div className='pt-[120px]'>
+                <p>Check your server</p>
+            </div>
+        )
+    }
   return (
-    <div className='pt-[120px] w-[80%] mx-auto'>
-        <h1 className='font-semibold text-[20px] mb-4'>{data?.title}</h1>
+    <div className='pt-[120px] w-[85%] mx-auto'>
+      <div className="flex justify-between mb-4">
+      <h1 className='font-semibold text-[20px]'>{data?.title}</h1>
+        <div className="flex items-center p-2 border rounded-lg ">
+            <span className='mr-2'>
+              <CiHeart size={24}/>
+            </span>
+            <p>Add to Wishlist</p>
+        </div>
+      </div>
         <div className='grid grid-cols-3 gap-4'>
-            {data?.images && data.images.map((image) => (
+            {data?.images && data.images?.slice(0,6)?.map((image) => (
                 <div key={image} >
                     <img 
                         src={image} 
-                        alt={``} 
-                        loading="lazy"/>
+                        alt={data?.title} 
+                        loading="lazy"
+                        className='rounded-lg'/>
                 </div>
             ))}
         </div>
@@ -61,6 +86,7 @@ const ProductDetailsHero = () => {
             productName={data?.productName}
             rate={data?.rate}
          />
+         <ProductVarities />
     </div>
   )
 }
