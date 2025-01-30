@@ -14,8 +14,7 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({products}:any) => {
             <img 
               src={product?.img} 
               className='rounded-lg h-[300px] w-full'
-              alt={product?.productName} 
-              loading="lazy"
+              alt={`product ${index + 1}`} 
             />
             <div 
               onClick={() => navigate(`/product_details/${product?.id}`)}

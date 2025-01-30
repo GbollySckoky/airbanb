@@ -19,40 +19,40 @@ const Hero = () => {
     <div>
       {/* Hero Section */}
       <div id="img">
-        <div className="w-[60%] h-[700px] flex flex-col justify-end items-start pb-[70px] mx-auto">
-          <p className="font-[400] text-[30px] mb-6 text-white">
-            Find Your Perfect <br /> Stay Anywhere in the World.
-          </p>
-          <div className="flex items-center">
-            <div className="bg-Blue text-white rounded-l-lg py-3 pl-4 w-[250px]">
-              <p className="font-[400] text-[12px] mb-1">Where Next</p>
-              <p className="font-[400] text-[12px]">Select Destination</p>
-            </div>
-            <div className="bg-Gray py-3 pl-4 w-[170px]">
-              <p className="font-[400] text-[12px] mb-1">Check-in</p>
-              <p className="font-[400] text-[12px] text-lightGray">Select Date</p>
-            </div>
-            <div className="bg-white py-[25px] px-9 flex gap-3">
-              <button>
-                <FaArrowLeft size={14} />
-              </button>
-              <button>
-                <FaArrowRightLong size={14} />
-              </button>
-            </div>
-            <div className="bg-Gray py-3 pl-4 w-[170px]">
-              <p className="font-[400] text-[12px] mb-1">Check-out</p>
-              <p className="font-[400] text-[12px] text-lightGray">Select Date</p>
-            </div>
-            <div className="bg-Blue text-white py-3 w-[250px] pl-4 rounded-r-lg">
-              <p className="font-[400] text-[12px] mb-1">Guest</p>
-              <p className="font-[400] text-[12px]">Add Visitor</p>
-            </div>
-            <button className="bg-white rounded-lg p-5 flex items-center justify-center text-center ml-4">
-              <IoIosSearch size={20} />
+      <div className="w-[60%] h-[700px] flex flex-col justify-end pb-[70px] mx-auto">
+        <p className="font-[400] text-[30px] mb-6 text-white">
+          Find Your Perfect <br /> Stay Anywhere in the World.
+        </p>
+        <div className="flex items-center ">
+          <div className="bg-Blue text-white rounded-l-lg py-3 pl-4 w-[220px]">
+            <p className="font-[400] text-[12px] mb-1">Where Next</p>
+            <p className="font-[400] text-[12px]">Select Destination</p>
+          </div>
+          <div className="bg-Gray py-3 pl-4 w-[200px]">
+            <p className="font-[400] text-[12px] mb-1">Check-in</p>
+            <p className="font-[400] text-[12px] text-lightGray">Select Date</p>
+          </div>
+          <div className="bg-white py-[25px] px-9 flex gap-3">
+            <button>
+              <FaArrowLeft size={14} />
+            </button>
+            <button>
+              <FaArrowRightLong size={14} />
             </button>
           </div>
+          <div className="bg-Gray py-3 pl-4 w-[200px]">
+            <p className="font-[400] text-[12px] mb-1">Check-out</p>
+            <p className="font-[400] text-[12px] text-lightGray">Select Date</p>
+          </div>
+          <div className="bg-Blue text-white py-3 w-[220px] pl-4 rounded-r-lg">
+            <p className="font-[400] text-[12px] mb-1">Guest</p>
+            <p className="font-[400] text-[12px]">Add Visitor</p>
+          </div>
+          <button className="bg-white rounded-lg p-3 flex items-center justify-center text-center ml-4">
+            <IoIosSearch size={20} />
+          </button>
         </div>
+      </div>
       </div>
 
       {/* Navigation Section */}
@@ -63,12 +63,12 @@ const Hero = () => {
 
       {/* Filter Section */}
       <section className="bg-Gray">
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto overflow-auto">
           <ul className="flex justify-evenly items-center gap-10 py-3">
             {datas.map((data, index) => (
               <li
                 key={index}
-                className={`cursor-pointer py-2 px-4 rounded-lg ${
+                className={`cursor-pointer p-2 rounded-lg ${
                   selectedCategory === data.category
                     ? "bg-blue-500 text-white"
                     : "hover:bg-lightGray"

@@ -10,6 +10,11 @@ import img10 from '../../assets/Frame.png'
 
 export const datas = [
     {
+        name: 'All',
+        icon: img8,
+        category: ''
+    },
+    {
         name: 'Beach Homes',
         icon: img8,
         category: 'Beach'
