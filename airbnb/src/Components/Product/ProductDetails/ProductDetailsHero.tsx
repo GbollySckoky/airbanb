@@ -5,6 +5,7 @@ import { products } from "../../data/ProductDatas";
 import ProductDetailsContext from './ProductDetailsContext';
 import ProductVarities from './ProductVarities';
 import { CiHeart } from "react-icons/ci";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const ProductDetailsHero = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -61,9 +62,16 @@ const ProductDetailsHero = () => {
   return (
     <div className='pt-[120px] w-[85%] mx-auto'>
       <div className="flex justify-between mb-4">
-      <h1 className='font-semibold text-[20px]'>{data?.title}</h1>
+        <div className="flex items-center">
+          <span className='cursor-pointer' onClick={() => navigate(`/`)}>
+            <MdKeyboardArrowLeft size={28} />
+          </span>
+          <h1 className='font-semibold text-[20px] ml-2'>
+            {data?.title}
+          </h1>
+        </div>
         <div className="flex items-center p-2 border rounded-lg ">
-            <span className='mr-2'>
+            <span className='mr-2 cursor-pointer'>
               <CiHeart size={24}/>
             </span>
             <p>Add to Wishlist</p>

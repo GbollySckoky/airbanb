@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 
 interface contextProps{
     productDetails: string
@@ -7,6 +8,7 @@ interface contextProps{
 }
 
 const ProductDetailsContext = ({ productDetails, space, productName, rate}: contextProps) => {
+    const navigate = useNavigate()
   return (
     <div className="flex justify-between mt-[55px] ">
         <div className="w-full">
@@ -53,6 +55,7 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate}: cont
                 </select>
             </div>
             <button 
+                onClick={() => navigate(`/checkout`)}
                 className="bg-white block w-full text-center p-1 font-normal text-[14px] text-Black rounded-lg mt-10">
                 Book Now
             </button>
