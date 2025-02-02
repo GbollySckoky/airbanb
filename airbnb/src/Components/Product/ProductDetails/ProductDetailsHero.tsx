@@ -45,20 +45,23 @@ const ProductDetailsHero = () => {
         setIsLoading(false)
       }
     }, [ id ]);
-    if(isLoading){
-        return(
-            <div className='pt-[120px]'>
-                <p>isLoading....</p>
-            </div>
-        )
-    }
-    if(isError){
-        return(
-            <div className='pt-[120px]'>
-                <p>Check your server</p>
-            </div>
-        )
-    }
+    const LoadingSpinner = () => (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-8 h-8 border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
+      </div>
+    );
+  if(isLoading){
+      return( 
+          LoadingSpinner()
+      )
+  }
+  if(isError){
+      return(
+          <div className='flex items-center justify-center min-h-screen'>
+              <p>Kindly check your network server</p>
+          </div>
+      )
+  }
   return (
     <div className='pt-[120px] w-[85%] mx-auto'>
       <div className="flex justify-between mb-4">
