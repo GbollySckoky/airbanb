@@ -5,9 +5,10 @@ interface contextProps{
     space: string[] | undefined
     productName: string
     rate: string
+    id?: number | undefined | string
 }
 
-const ProductDetailsContext = ({ productDetails, space, productName, rate}: contextProps) => {
+const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: contextProps) => {
     const navigate = useNavigate()
   return (
     <div className="flex justify-between mt-[55px] ">
@@ -52,7 +53,7 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate}: cont
                     className="w-full p-2 rounded-lg font-normal outline-none" />
             </div>
             <button 
-                onClick={() => navigate(`/checkout`)}
+                onClick={() => navigate(`/checkout/${id}`)}
                 className="bg-white block w-full text-center p-1 font-normal text-[14px] text-Black rounded-lg mt-10">
                 Book Now
             </button>

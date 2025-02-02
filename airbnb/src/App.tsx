@@ -16,7 +16,7 @@ const App = () => {
         <Route path='/' element={ <Hero />} />
         <Route path='/product_details/:id' element={ <ProductDetailsHero />} />
         <Route path='/product_details/:id/all_image' element={ <AllImages />} />
-        <Route path='/checkout' element={ <Checkout/>} />
+        <Route path='/checkout/:id' element={ <Checkout/>} />
       </Routes>
       </Context>
     </BrowserRouter>

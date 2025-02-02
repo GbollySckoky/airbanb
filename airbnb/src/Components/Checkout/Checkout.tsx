@@ -4,7 +4,9 @@ import { useState } from 'react'
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import CheckoutInfo from './CheckoutInfo';
 import Choose from '../Utils/Reusable/Choose';
-
+import { useParams } from 'react-router-dom';
+import { products } from '../data/ProductDatas';
+import { Products } from '../types/types';
 const Checkout = () => {
     const {firstName,lastName,email,phoneNumber} = datas
     const [inputValue, setInputValue] = useState({
@@ -13,6 +15,7 @@ const Checkout = () => {
         email:'',
         phoneNumber:''
     })
+    const {id} = useParams()
     const handleChange = (e: any) => {
         const {name, value} = e.target;
         setInputValue((prev) => ({
@@ -20,6 +23,8 @@ const Checkout = () => {
             [name]: value
         }))
     }
+    const findData = products?.find((product: Products) => product?.id  === Number(id));
+    console.log(findData);
    return (
     <div className='pt-[120px] w-[85%] mx-auto'>
         <div className='flex mb-5'>
@@ -88,7 +93,11 @@ const Checkout = () => {
                     receive booking-related texts. Standard messaging rates may apply.
                 </p>
             </div>
-            <CheckoutInfo />
+            <CheckoutInfo
+            images={findData?.images || []}
+            space={findData?.space || []}
+            productName={findData?.productName || ''}
+            title={findData?.title || ''} />
         </div>
     </div>
   )
