@@ -10,7 +10,7 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 const ProductDetailsHero = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState<unknown>(null)
-    const {id} = useParams<string>()
+    const {id} = useParams()
     const navigate = useNavigate()
     console.log(id)
     const [data, setData] = useState<ProductsDetails>({
@@ -101,6 +101,7 @@ const ProductDetailsHero = () => {
         space={data?.space}
         productName={data?.productName}
         rate={data?.rate}
+        id={id}
       />
          <ProductVarities />
     </div>
