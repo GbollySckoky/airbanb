@@ -46,13 +46,10 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate}: cont
                 </div>
             </div>
             <div className="pb-[60px]">
-                <select
-                    className="block w-full p-2 rounded-lg font-normal text-[12px] pl-7 ">
-                    <option 
-                        value="Add guest">
-                        Add guest
-                    </option>
-                </select>
+                <input 
+                    type="text" 
+                    placeholder="Add a guest"
+                    className="w-full p-2 rounded-lg font-normal outline-none" />
             </div>
             <button 
                 onClick={() => navigate(`/checkout`)}
