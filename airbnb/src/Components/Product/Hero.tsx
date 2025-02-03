@@ -7,7 +7,6 @@ import { products } from "../data/ProductDatas"; // Product list
 import ProductDisplay from "./ProductDisplay"; // Component for displaying products
 
 const Hero = () => {
-  // State for selected category
   const [selectedCategory, setSelectedCategory] = useState<string>("");
     console.log(selectedCategory)
   // Filter products based on the selected category
@@ -15,6 +14,7 @@ const Hero = () => {
     selectedCategory === "" || product.category === selectedCategory
   );
 
+  
   return (
     <div>
       {/* Hero Section */}
