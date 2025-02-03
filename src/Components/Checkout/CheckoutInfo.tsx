@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import YouTube from '../Utils/Reusable/Loading';
+
 import Choose from '../Utils/Reusable/Choose';
 import Skeleton from '@mui/material/Skeleton';
 
@@ -46,7 +46,18 @@ const CheckoutInfo = ({
       {/* Slider Container */}
       <div>
         {isLoading ? (
-          <YouTube  />
+          <div className='pt-[120px] w-[85%] mx-auto'>
+            <div className="grid grid-cols-3 gap-4">
+              {[...Array(5)].map((_, index) => (
+                <Skeleton 
+                  key={index} 
+                  variant="rectangular" 
+                  width="100%" 
+                  height={300} 
+                />
+              ))}
+            </div>
+        </div>
         ) : (
           <div>
             <div className="slider-container overflow-hidden w-full relative">
