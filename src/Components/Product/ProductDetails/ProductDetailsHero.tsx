@@ -1,125 +1,132 @@
+import React, { useEffect, useState } from 'react';
 import Skeleton from '@mui/material/Skeleton';
-import { useEffect, useState } from 'react';
 import { CiHeart } from "react-icons/ci";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowLeft, MdOutlineFavorite } from "react-icons/md";
 import { useNavigate, useParams } from 'react-router-dom';
 import { products } from "../../data/ProductDatas";
 import { ProductsDetails } from '../../types/types';
 import ProductDetailsContext from './ProductDetailsContext';
 import ProductVarities from './ProductVarities';
-import { MdOutlineFavorite } from "react-icons/md";
 
-const ProductDetailsHero = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState<unknown>(null)
-    const {id} = useParams()
-    const navigate = useNavigate()
-    const [like, setLike] = useState(false)
-    const [data, setData] = useState<ProductsDetails>({
-        category: '',
-        id: 0,
-        images: [],
-        imagess: [],
-        img: '',
-        price: 0,
-        productDetails: '',
-        productName: '',
-        title: '',
-        rate: '',
-        available: '',
-        space: [],
-        description: ''
-      });
-      const handleClick = () => {
-        setLike((prev) => !prev )
+const ProductDetailsHero: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState<unknown>(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [like, setLike] = useState(false);
+
+  const [data, setData] = useState<ProductsDetails>({
+    category: '',
+    id: 0,
+    images: [],
+    imagess: [],
+    img: '',
+    price: 0,
+    productDetails: '',
+    productName: '',
+    title: '',
+    rate: '',
+    available: '',
+    space: [],
+    description: ''
+  });
+
+  const handleLikeToggle = () => {
+    setLike((prevLike) => !prevLike);
+  };
+
+  useEffect(() => {
+    const product = products.find((product) => product.id === Number(id));
+    try {
+      if (product) {
+        setData(product);
+        setIsLoading(false);
+      } else {
+        throw new Error("Couldn't find product. Please check your connection.");
       }
-    useEffect(() => {
-        const product = products.find((product) => product.id === Number(id));
-        console.log('899', product);
-      try{
-        if(product){
-          setData(product);
-          setIsLoading(false);
-        }else{
-          throw new Error("couldn't find product check your internet connection")
-        }
-      }catch(error){
-        setIsError(error)
-        setIsLoading(false)
-      }
-    }, [ id ]);
-  //   const LoadingSpinner = () => (
-  //     <div className="flex items-center justify-center min-h-screen">
-  //       <div className="w-8 h-8 border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
-  //     </div>
-  //   );
-  // if(isLoading){
-  //     return( 
-  //         LoadingSpinner()
-  //     )
-  // }
+    } catch (error) {
+      setIsError(error);
+      setIsLoading(false);
+    }
+  }, [id]);
+
   if (isLoading) {
     return (
-      <div className='pt-[120px] w-[85%] mx-auto'>
-        <div className="grid grid-cols-3 gap-4">
+      <div className='container mx-auto px-4 pt-24'>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(5)].map((_, index) => (
             <Skeleton 
               key={index} 
               variant="rectangular" 
               width="100%" 
               height={300} 
+              className="rounded-lg"
             />
           ))}
         </div>
       </div>
     );
   }
-  if(isError){
-      return(
-          <div className='flex items-center justify-center min-h-screen'>
-              <p>Kindly check your network server</p>
-          </div>
-      )
+
+  if (isError) {
+    return (
+      <div className='flex items-center justify-center min-h-screen'>
+        <p className='text-red-500'>Unable to load product. Please check your network connection.</p>
+      </div>
+    );
   }
+
   return (
-    <div className='pt-[120px] w-[85%] mx-auto'>
-      <div className="flex justify-between mb-4">
-        <div className="flex items-center">
-          <span className='cursor-pointer' onClick={() => navigate(`/`)}>
+    <div className='container mx-auto px-4 pt-24'>
+      {/* Header Section */}
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center space-x-2">
+          <button 
+            onClick={() => navigate('/products')} 
+            className="hover:bg-gray-100 rounded-full p-2 transition-colors"
+          >
             <MdKeyboardArrowLeft size={28} />
-          </span>
-          <h1 className='font-semibold text-[20px] ml-2'>
+          </button>
+          <h1 className='font-semibold text-xl'>
             {data?.title}
           </h1>
         </div>
-        <div className="flex items-center p-2 border rounded-lg " >
-            <span 
-              className='mr-2 cursor-pointer' 
-              onClick={handleClick}>
-             {like? <MdOutlineFavorite size={24} color='text-red-500' /> : <CiHeart size={24}/>} 
-            </span>
-            <p>Add to Wishlist</p>
+        <div 
+          className="flex items-center space-x-2 border rounded-lg px-3 py-2 cursor-pointer hover:bg-gray-50"
+          onClick={handleLikeToggle}
+        >
+          {like ? (
+            <MdOutlineFavorite size={24} />
+          ) : (
+            <CiHeart size={24} />
+          )}
+          <p className="text-sm">Add to Wishlist</p>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-4 relative'>
-        {data?.images && data.images?.slice(0,5)?.map((image, index) => (
-          <div key={image} className="relative">
+
+      {/* Image Gallery */}
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+        {data?.images?.slice(0, 5).map((image, index) => (
+          <div key={image} className="relative group">
             <img 
               src={image} 
               alt={data?.title} 
               loading="lazy"
-              className='rounded-lg h-[300px] w-full object-cover'
+              className='rounded-lg h-[300px] w-full object-cover transition-transform group-hover:scale-105'
             />
             {index === 4 && (
               <button 
-                className='absolute bottom-6 right-4 bg-[#EFEFF080] text-white py-2 px-[30px]'
-                onClick={() => navigate(`/product_details/${id}/all_image`)}>
+                className='absolute bottom-4 right-4 bg-black/50 text-white px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity'
+                onClick={() => navigate(`/product_details/${id}/all_image`)}
+              >
                 View all images
               </button>
             )}
           </div>
         ))}
-      </div>        
+      </div>
+
+      {/* Product Details */}
       <ProductDetailsContext
         productDetails={data?.productDetails}
         space={data?.space}
@@ -127,9 +134,10 @@ const ProductDetailsHero = () => {
         rate={data?.rate}
         id={id}
       />
-         <ProductVarities />
+      
+      <ProductVarities />
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetailsHero
+export default ProductDetailsHero;

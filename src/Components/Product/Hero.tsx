@@ -8,7 +8,7 @@ import ProductDisplay from "./ProductDisplay"; // Component for displaying produ
 
 const Hero = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-    console.log(selectedCategory)
+
   // Filter products based on the selected category
   const filteredProducts = products.filter((product) => 
     selectedCategory === "" || product.category === selectedCategory
@@ -73,7 +73,9 @@ const Hero = () => {
                     ? "bg-blue-500 text-white"
                     : "hover:bg-lightGray"
                 }`}
-                onClick={() => setSelectedCategory(data.category)}
+                onClick={() =>  
+                  setSelectedCategory(data.category)
+                }
               >
                 {data.icon && (
                   <img
