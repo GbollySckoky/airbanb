@@ -38,13 +38,13 @@ export const datas = [
     { 
         title: 'The neighbourhood', 
         id: '3',
-         content: [
-            {
-                titles: 'Luxury Amenities',
-                sub: 'Fully equipped gourmet kitchen, spa-like bathrooms, and smart home technology for a five-star experience.',
-                id: '1239h2'
-            },
-         ]
+        //  content: [
+        //     {
+        //         titles: 'Luxury Amenities',
+        //         sub: 'Fully equipped gourmet kitchen, spa-like bathrooms, and smart home technology for a five-star experience.',
+        //         id: '1239h2'
+        //     },
+        //  ]
     },
     { 
         title: 'Booking policies', 

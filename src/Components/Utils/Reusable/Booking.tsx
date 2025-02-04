@@ -7,9 +7,9 @@ interface BookingProps{
     selectDate: string
     checkOut: string
     select: string
-
+    _fn: () => void
 }
-const Booking = ({title, onClick, text,selectDate,checkOut,select}: BookingProps) => {
+const Booking = ({title, onClick, text,selectDate,checkOut,select, _fn}: BookingProps) => {
   return (
     <div>
         <p className="font-medium text-[14px] text-white mb-5">
@@ -25,7 +25,9 @@ const Booking = ({title, onClick, text,selectDate,checkOut,select}: BookingProps
             <div>
                 p
             </div>
-            <div className="bg-white rounded-lg pb-2">
+            <div 
+                className="bg-white rounded-lg pb-2"
+                onClick={_fn}>
                 <p className="font-[400] text-[12px] text-Black pb-2 px-7 py-2">{checkOut}</p>
                 <p className="font-[400] text-[10px] text-Gray200">{select}</p>
             </div>

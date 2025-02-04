@@ -80,14 +80,14 @@ const ProductDetailsHero: React.FC = () => {
     <div className='container mx-auto px-4 pt-24'>
       {/* Header Section */}
       <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center lg:space-x-2">
           <button 
             onClick={() => navigate('/products')} 
             className="hover:bg-gray-100 rounded-full p-2 transition-colors"
           >
             <MdKeyboardArrowLeft size={28} />
           </button>
-          <h1 className='font-semibold text-xl'>
+          <h1 className='hidden lg:block font-semibold text-xl'>
             {data?.title}
           </h1>
         </div>
@@ -96,7 +96,7 @@ const ProductDetailsHero: React.FC = () => {
           onClick={handleLikeToggle}
         >
           {like ? (
-            <MdOutlineFavorite size={24} />
+            <MdOutlineFavorite size={24}  />
           ) : (
             <CiHeart size={24} />
           )}
@@ -112,11 +112,11 @@ const ProductDetailsHero: React.FC = () => {
               src={image} 
               alt={data?.title} 
               loading="lazy"
-              className='rounded-lg h-[300px] w-full object-cover transition-transform group-hover:scale-105'
+              className='rounded-xl h-[300px] w-full object-cover transition-transform group-hover:scale-105'
             />
             {index === 4 && (
               <button 
-                className='absolute bottom-4 right-4 bg-black/50 text-white px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity'
+                className='absolute bottom-4 right-4 bg-black/50 text-white px-4 py-2 rounded-md '
                 onClick={() => navigate(`/product_details/${id}/all_image`)}
               >
                 View all images
