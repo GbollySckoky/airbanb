@@ -60,7 +60,15 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: 
             <p className="font-normal text-[10px] text-center pt-2 text-white">You will not be charged yet</p>
         </div>
        
-        {/* {active && 1} */}
+        {active && (
+              <div className="modal-backgrounds">
+              <div className="modal-content">
+              <input type="date" className="outline-none border"/>
+              
+            </div>
+            </div>
+           
+        )}
     </div>
   )
 }
