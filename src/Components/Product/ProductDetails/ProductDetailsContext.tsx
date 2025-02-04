@@ -63,7 +63,7 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: 
         {active && (
               <div className="modal-backgrounds">
               <div className="modal-content">
-              <input type="date" className="outline-none border"/>
+              <input type="date" className="outline-none border w-full"/>
               
             </div>
             </div>
