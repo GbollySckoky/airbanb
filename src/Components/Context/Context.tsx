@@ -2,7 +2,13 @@ import React, { createContext, ReactNode, useContext, useReducer } from 'react'
 import { Action, countData } from '../types/types'
 import { Reducer } from '../Reducer/Reducer'
 const initialCountData: countData = {
-    movement: ''
+    movement: '',
+    address: '',
+    state: '',
+    country: '',
+    aptitude: '',
+    province: '',
+    city: '',
 }
 
 export interface Count{

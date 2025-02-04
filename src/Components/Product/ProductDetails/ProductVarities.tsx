@@ -1,6 +1,7 @@
 import { useFormContext } from '../../Context/Context';
 import { datas } from '../../data/ProductInfoData'; 
 import Amenities from "./Amenities";
+import Location from '../Location/Location';
 
 const ProductVarities = () => {
   const { state, dispatch } = useFormContext();
@@ -15,7 +16,7 @@ const ProductVarities = () => {
   return (
     <div className="mt-9">
       {/* Title Buttons */}
-      <div className="flex items-center space-x-6 bg-Gray300 p-6 mb-5 text-Gray200 rounded-lg">
+      <div className="flex items-center space-x-6 bg-Gray300 p-6 mb-5 text-Gray200 rounded-lg overflow-x-auto">
         {datas.map(({ title, id }) => (
           <div
             key={id}
@@ -24,7 +25,7 @@ const ProductVarities = () => {
             }`}
             onClick={() => handleClick( title)}
           >
-            <h1 className="text-[12px] font-semibold">{title}</h1>
+            <h1 className="text-[12px] font-semibold truncate w-full">{title}</h1>
           </div>
         ))}
       </div>
@@ -44,7 +45,8 @@ const ProductVarities = () => {
                       </div>
                     ))
                   ) : (
-                    <Amenities />
+                    title === 'Amenities' ? <Amenities /> : 
+                    title === 'The neighbourhood' ? <Location /> : null
                   )}
                 </div>
             </div>

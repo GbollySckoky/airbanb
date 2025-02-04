@@ -32,7 +32,19 @@ export type Products = {
 
 export type countData = {
     movement: string
+    address: string
+    state: string
+    country: string
+    aptitude: string
+    province: string
+    city: string
 }
 
 export type Action = 
 | {type:'MOVEMENT'; payload: string}
+| {type:'ADDRESS'; payload: string}
+| {type:'STATE'; payload: string}
+| {type:'COUNTRY'; payload: string}
+| {type:'APTITUDE'; payload: string}
+| {type:'PROVINCE'; payload: string}
+| {type:'CITY'; payload: string}
