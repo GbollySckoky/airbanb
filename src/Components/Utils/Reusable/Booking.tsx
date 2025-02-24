@@ -17,7 +17,7 @@ const Booking = ({title, onClick, text,selectDate,checkOut,select, _fn}: Booking
         </p>
         <div className="flex justify-between mb-5 text-center">
             <div 
-                className="bg-white rounded-lg pb-2 cursor-pointer"
+                className="bg-white rounded-xl pb-2 cursor-pointer"
                 onClick={onClick}>
                 <p className="font-[400] text-[12px] text-Black pb-2 px-7 py-2">{text}</p>
                 <p className="font-[400] text-[10px] text-Gray200">{selectDate}</p>
@@ -26,7 +26,7 @@ const Booking = ({title, onClick, text,selectDate,checkOut,select, _fn}: Booking
                 p
             </div>
             <div 
-                className="bg-white rounded-lg pb-2"
+                className="bg-white rounded-xl pb-2 cursor-pointer"
                 onClick={_fn}>
                 <p className="font-[400] text-[12px] text-Black pb-2 px-7 py-2">{checkOut}</p>
                 <p className="font-[400] text-[10px] text-Gray200">{select}</p>

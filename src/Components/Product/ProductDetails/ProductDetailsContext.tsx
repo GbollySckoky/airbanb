@@ -16,6 +16,11 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: 
     const navigate = useNavigate()
     const [active, setActive] = useState(false)
     const [actives, setActives] = useState(false)
+    const [inputValue, setInputValue] = useState({
+        user: '',
+        dateIn:'',
+        dateOut:'',
+    })
 
     const handleDateIn = () => {
         setActive((prev) => !prev);
@@ -23,6 +28,14 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: 
     const handleDateOut = () => {
         setActives((prev) => !prev);
     };
+
+    const handleInputField = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target
+        setInputValue((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+    }
     
   return (
     <div className="md:flex justify-between mt-[55px] ">
@@ -56,7 +69,9 @@ const ProductDetailsContext = ({ productDetails, space, productName, rate, id}: 
                 <input 
                     type="text" 
                     placeholder="Add a guest"
-                    className="w-full p-2 font-normal rounded-xl outline-none" />
+                    className="w-full p-2 font-normal rounded-xl outline-none"
+                    value={inputValue.user}
+                    />
             </div>
             <button 
                 onClick={() => navigate(`/checkout/${id}`)}
